@@ -1,0 +1,53 @@
+.book-card-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  width: 10rem;
+  padding: 0.5rem;
+}
+
+.book-card-main img {
+  height: 15rem;
+  width: 100%;
+}
+
+.book-card-main p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  text-align: justify;
+}
+
+.book-title {
+  font-weight: bold;
+}
+
+.book-author {
+  color: gray;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.25rem;
+  margin: 0.2rem;
+  white-space: nowrap;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.on-image {
+  position: relative;
+  top: 0;
+  left: 0;
+}

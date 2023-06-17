@@ -1,15 +1,38 @@
-import React, { useState } from "react";
-import { booksData } from "../db/books_db";
+import React, { useContext, useState } from "react";
+
+import BookCard from "../components/BookCard";
+import { BooksContext } from "../contexts/BooksContext";
 
 function SearchPage() {
+  const { books } = useContext(BooksContext);
+
   const [searchBarData, setSearchBarData] = useState("");
-  const [filteredBooks, setFilteredBooks] = useState(booksData);
+  const [filteredBooks, setFilteredBooks] = useState(books);
+
+  const searchBarChangeHandler = (event) => {
+    setSearchBarData(event.target.value);
+    setFilteredBooks(
+      books.filter(({ name }) =>
+        name.toLowerCase().includes(event.target.value.toLowerCase())
+      )
+    );
+  };
 
   return (
-    <div>
-      {filteredBooks.map((eachBook) => (
-        <p>{eachBook.name}</p>
-      ))}
+    <div className="books-div">
+      <input
+        type="text"
+        placeholder="Search The Books"
+        onChange={(event) => {
+          searchBarChangeHandler(event);
+        }}
+        value={searchBarData}
+      />
+      <div className="books-list">
+        {filteredBooks.map((eachBook) => (
+          <BookCard key={eachBook.id} eachBookData={eachBook} />
+        ))}
+      </div>
     </div>
   );
 }

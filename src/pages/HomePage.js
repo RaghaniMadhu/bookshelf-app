@@ -1,39 +1,43 @@
-import React from "react";
-import { booksData } from "../db/books_db";
+import React, { useContext } from "react";
 import { READ, READING, WANT_TO_READ } from "../utils/constants";
+import BookCard from "../components/BookCard";
+import "./Pages.css";
+import { BooksContext } from "../contexts/BooksContext";
 
 function HomePage() {
-  const readingBooks = booksData.filter(({ category }) => category === READING);
+  const { books } = useContext(BooksContext);
 
-  const wantToReadBooks = booksData.filter(
+  const readingBooks = books.filter(({ category }) => category === READING);
+
+  const wantToReadBooks = books.filter(
     ({ category }) => category === WANT_TO_READ
   );
 
-  const readBooks = booksData.filter(({ category }) => category === READ);
+  const readBooks = books.filter(({ category }) => category === READ);
 
   return (
     <div>
-      <div>
-        <h4>Currently Reading</h4>
-        <div>
+      <div className="books-div">
+        <h2>Currently Reading</h2>
+        <div className="books-list">
           {readingBooks.map((eachBook) => (
-            <p>{eachBook.name}</p>
+            <BookCard key={eachBook.id} eachBookData={eachBook} />
           ))}
         </div>
       </div>
-      <div>
-        <h4>Want To Read</h4>
-        <div>
+      <div className="books-div">
+        <h2>Want To Read</h2>
+        <div className="books-list">
           {wantToReadBooks.map((eachBook) => (
-            <p>{eachBook.name}</p>
+            <BookCard key={eachBook.id} eachBookData={eachBook} />
           ))}
         </div>
       </div>
-      <div>
-        <h4>Read</h4>
-        <div>
+      <div className="books-div">
+        <h2>Read</h2>
+        <div className="books-list">
           {readBooks.map((eachBook) => (
-            <p>{eachBook.name}</p>
+            <BookCard key={eachBook.id} eachBookData={eachBook} />
           ))}
         </div>
       </div>
