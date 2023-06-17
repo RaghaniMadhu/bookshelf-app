@@ -36,7 +36,7 @@ function BookCard({ eachBookData: { id, img, name, author, category } }) {
           className="dropdown-menu"
           style={{ display: isOpen ? "block" : "none" }}
         >
-          <button class="dropdown-item" disabled={true}>
+          <button className="dropdown-item" disabled={true}>
             Move To
           </button>
           <button

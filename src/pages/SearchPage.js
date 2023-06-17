@@ -8,16 +8,14 @@ function SearchPage() {
   const { books } = useContext(BooksContext);
 
   const [searchBarData, setSearchBarData] = useState("");
-  const [filteredBooks, setFilteredBooks] = useState(books);
 
   const searchBarChangeHandler = (event) => {
     setSearchBarData(event.target.value);
-    setFilteredBooks(
-      books.filter(({ name }) =>
-        name.toLowerCase().includes(event.target.value.toLowerCase())
-      )
-    );
   };
+
+  const filteredBooks = books.filter(({ name }) =>
+    name.toLowerCase().includes(searchBarData.toLowerCase())
+  );
 
   return (
     <div>
