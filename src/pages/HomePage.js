@@ -3,6 +3,7 @@ import { READ, READING, WANT_TO_READ } from "../utils/constants";
 import BookCard from "../components/BookCard";
 import "./Pages.css";
 import { BooksContext } from "../contexts/BooksContext";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const { books } = useContext(BooksContext);
@@ -17,6 +18,7 @@ function HomePage() {
 
   return (
     <div>
+      <Link to="/search">To Search Page</Link>
       <div className="books-div">
         <h2>Currently Reading</h2>
         <div className="books-list">
